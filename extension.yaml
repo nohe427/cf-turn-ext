@@ -42,8 +42,6 @@ resources:
     description: >-
       Provides the token exchange service to exchange and validate Cloudflare Turnsitle tokens for AppCheck tokens.
     properties:
-      # LOCATION is a user-configured parameter value specified by the user during installation.
-      location: ${LOCATION}
       # httpsTrigger is used for an HTTP triggered function.
       httpsTrigger: {}
       runtime: "nodejs18"
@@ -55,7 +53,7 @@ params:
     label: Secret Key for site verification
     description: >-
       This is the secret key used for exchanging Turnstile attestation for verdicts.
-    type: string
+    type: secret
     required: true
     immutable: false
   - param: APPID
