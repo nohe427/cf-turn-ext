@@ -12,16 +12,21 @@ https://firebase.google.com/docs/extensions/publishers/user-documentation#writin
 
 # See it in action
 
-You can test out this extension right away!
+You can use this extension by initializing your Firebase app as normal and then
+adding the Firebase App Check provider. Code example:
 
-Visit the following URL:
-${function:greetTheWorld.url}
+```
+const app = initializeApp(firebaseConfig);
 
-# Using the extension
+const siteKey = 'YOUR-SITE-KEY';
+const HTTP_ENDPOINT = '${function:function-name.url}';
 
-When triggered by an HTTP request, this extension responds with the following specified greeting: "${param:GREETING} World from ${param:EXT_INSTANCE_ID}".
+const cpo = new CloudFlareProviderOptions(HTTP_ENDPOINT, siteKey);
+const provider = new CustomProvider(cpo);
 
-To learn more about HTTP functions, visit the [functions documentation](https://firebase.google.com/docs/functions/http-events).
+initializeAppCheck(app, {provider: provider});
+
+```
 
 <!-- We recommend keeping the following section to explain how to monitor extensions with Firebase -->
 # Monitoring

@@ -39,6 +39,9 @@ exports.tokenExchange = onRequest(
   },
   async (request, response) => {
     const cloudFlareToken = request.body.cloudflaretoken;
+    // For use in the future when the admin sdk supports
+    // limited use token minting.
+    // const limiteduse = request.body.limiteduse;
     logger.log("cloud flare token recieved", cloudFlareToken);
     const result = await axios.post(
       verifyUrl,

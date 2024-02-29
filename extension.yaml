@@ -1,14 +1,14 @@
 # Learn detailed information about the fields of an extension.yaml file in the docs:
 # https://firebase.google.com/docs/extensions/reference/extension-yaml
 
-name: cloudflare-appcheck-provider
+name: cloudflare-app-check-provider
 version: 0.0.1 # Follow semver versioning
 specVersion: v1beta # Version of the Firebase Extensions specification
 # Friendly display name for your extension (~3-5 words)
-displayName: Cloudflare Turnstile AppCheck Provider
+displayName: Cloudflare Turnstile AppnCheck Provider
 # Brief description of the task your extension performs (~1 sentence)
 description: >-
-  The Cloudflare Turnstile AppCheck Provider for Firebase.
+  The Cloudflare Turnstile App Check Provider for Firebase.
 license: Apache-2.0 # https://spdx.org/licenses/
 # Public URL for the source code of your extension
 sourceUrl: https://github.com/change-me/to-your-repo
@@ -18,8 +18,8 @@ billingRequired: true
 tags: [cloudflare, appcheck, appcheck-provider]
 
 author:
-  authorName: Alexander Nohe
-  url: https://nohe.dev
+  authorName: The Cloudflare Turnstile Team
+  url: https://www.cloudflare.com/products/turnstile/
 
 # In an `apis` field, list any Google APIs (like Cloud Translation, BigQuery, etc.)
 # required for your extension to operate.
@@ -30,7 +30,7 @@ author:
 # Learn more in the docs:
 # https://firebase.google.com/docs/extensions/reference/extension-yaml#roles-field
 roles:
-  - role: iam.serviceAccounts.signBlob
+  - role: iam.serviceAccountTokenCreator
     reason: We need the signBlob permission to mint App Check tokens on behalf of the project.
 
 # In the `resources` field, list each of your extension's functions, including the trigger for each function.
@@ -54,15 +54,14 @@ params:
   - param: SECRETKEY
     label: Secret Key for site verification
     description: >-
-      This is the secret key used for  For example, Hello world? or What's up, world?
+      This is the secret key used for exchanging Turnstile attestation for verdicts.
     type: string
-    default: Hello
     required: true
     immutable: false
   - param: APPID
     label: Firebase App Id
     description: >-
-      This is the Firebase App Id.
+      This is the Firebase App Id for the web app used.
     type: string
     required: true
     immutable: false

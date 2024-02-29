@@ -7,9 +7,9 @@ Learn more about writing a PREINSTALL.md file in the docs:
 https://firebase.google.com/docs/extensions/publishers/user-documentation#writing-preinstall
 -->
 
-Use this extension to send a friendly greeting.
+Use this extension to exchange a Cloudflare token for an App Check token.
 
-When triggered by an HTTP request, this extension responds with your specified friendly greeting.
+When triggered by an HTTP request, this extension responds with an App Check token.
 
 <!-- We recommend keeping the following section to explain how billing for Firebase Extensions works -->
 # Billing
